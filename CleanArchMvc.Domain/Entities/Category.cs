@@ -8,7 +8,7 @@ using CleanArchMvc.Domain.Validation;
 namespace CleanArchMvc.Domain.Entities
 {
     public sealed class Category : Entity
-    {        
+    {
         public string Name { get; private set; }
 
         public Category(string name)
@@ -16,29 +16,28 @@ namespace CleanArchMvc.Domain.Entities
             ValidateDomain(name);
         }
 
-        private void ValidateDomain(string name)
+        public Category(int id, string name)
         {
-            DomainExceptionValidation.When(string.IsNullOrEmpty(name), 
-                "O campos name não pode ser vazio");
-
-            DomainExceptionValidation.When(name.Length <3,
-               "O campos name não pode ter menos de 3 caracteres.");
-
-            Name = name;
+            DomainExceptionValidation.When(id < 0, "Invalid Id value");
+            Id = id;
+            ValidateDomain(name);
         }
 
         public void Update(string name)
         {
             ValidateDomain(name);
         }
+        public ICollection<Product> Products { get; set; }
 
-        public Category(int id, string name)
+        private void ValidateDomain(string name)
         {
-            Id = id;
+            DomainExceptionValidation.When(string.IsNullOrEmpty(name),
+                "Invalid name.Name is required");
+
+            DomainExceptionValidation.When(name.Length < 3,
+               "Invalid name, too short, minimum 3 characters");
+
             Name = name;
         }
-
-        public ICollection<Product> Products { get; private set; }
-
     }
 }
