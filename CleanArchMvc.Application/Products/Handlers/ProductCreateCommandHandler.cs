@@ -22,6 +22,11 @@ namespace CleanArchMvc.Application.Products.Handlers
 
         public Task<Product> Handle(ProductCreateCommand request, CancellationToken cancellationToken)
         {
+           // var product = new Product(request.Name, request.Descripstion, )
+
+
+
+
             throw new NotImplementedException();
         }
     }
