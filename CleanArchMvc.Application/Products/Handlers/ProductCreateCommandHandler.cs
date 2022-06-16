@@ -20,14 +20,20 @@ namespace CleanArchMvc.Application.Products.Handlers
             _productRepository = productRepository;
         }
 
-        public Task<Product> Handle(ProductCreateCommand request, CancellationToken cancellationToken)
+        public async Task<Product> Handle(ProductCreateCommand request, CancellationToken cancellationToken)
         {
-           // var product = new Product(request.Name, request.Descripstion, )
+            var product = new Product(request.Name, request.Description, request.Price, request.Stock, request.Image);
 
-
-
-
-            throw new NotImplementedException();
+            if (product == null)
+            {
+                throw new ApplicationException($"Erro ao criar entidade");    
+            }
+            else
+            {
+                product.CategoryId = request.CategoryId;
+                return await _productRepository.CreateAsync(product);
+            }
         }
+        
     }
 }
