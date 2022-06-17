@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,16 +11,16 @@ using MediatR;
 
 namespace CleanArchMvc.Application.Products.Handlers
 {
-    public class ProductUpdateCommandHandler : IRequestHandler<ProductUpdateCommand, Product>
+    public class ProductRemoveCommandHandler : IRequestHandler<ProductRemoveCommand, Product>
     {
         private readonly IProductRepository _productRepository;
 
-        public ProductUpdateCommandHandler(IProductRepository productRepository)
+        public ProductRemoveCommandHandler(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }
 
-        public async Task<Product> Handle(ProductUpdateCommand request, CancellationToken cancellationToken)
+        public async Task<Product> Handle(ProductRemoveCommand request, CancellationToken cancellationToken)
         {
             var product = await _productRepository.GetByIdAsync(request.Id);
 
@@ -30,11 +30,8 @@ namespace CleanArchMvc.Application.Products.Handlers
             }
             else
             {
-                product.Update(request.Name, request.Description, request.Price, request.Stock, request.Image, request.CategoryId);
-
-                return await _productRepository.UpdateAsync(product);
+                return await _productRepository.RemoveAsync(product);
             }
-            
         }
     }
 }
