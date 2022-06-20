@@ -1,5 +1,5 @@
 ﻿using CleanArchMvc.Application.Products.Queries;
-using CleanArchMvc.Domain.Entities;
+using CleanArchMvc.Domain.Entities;      
 using CleanArchMvc.Domain.Interfaces;
 using MediatR;
 using System;
