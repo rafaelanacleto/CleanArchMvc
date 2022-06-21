@@ -1,6 +1,7 @@
 ﻿using CleanArchMvc.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using MediatR;
 
 namespace CleanArchMvc.WebUI.Controllers
 {

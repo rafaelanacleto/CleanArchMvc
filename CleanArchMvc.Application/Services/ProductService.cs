@@ -6,35 +6,47 @@ using CleanArchMvc.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using MediatR;
+using CleanArchMvc.Application.Products.Queries;
 
 namespace CleanArchMvc.Application.Services
 {
     public class ProductService : IProductService
     {
-        private IProductRepository _productRepository;
-
+        private IProductRepository _productRepository;        
         private readonly IMapper _mapper;
-        public ProductService(IMapper mapper, IProductRepository productRepository)
+        private readonly IMediator _mediator;
+        public ProductService(IMapper mapper, IMediator mediator)
         {
-            _productRepository = productRepository ??
-                 throw new ArgumentNullException(nameof(productRepository));
-
+            _mediator = mediator;
             _mapper = mapper;
         }
 
         public async Task<IEnumerable<ProductDTO>> GetProducts()
         {
-            var productsEntity = await _productRepository.GetProductsAsync();
-            return _mapper.Map<IEnumerable<ProductDTO>>(productsEntity);
+            var productsQuery = new GetProductsQuery();
+
+            if(productsQuery == null)
+                throw new ApplicationException("Error ao consultar Produtos");
+
+            var result = await _mediator.Send(productsQuery);
+
+            return _mapper.Map<IEnumerable<ProductDTO>>(result);
         }
 
-        public async Task<ProductDTO> GetById(int? id)
+        public async Task<ProductDTO> GetById(int id)
         {
-            var productEntity = await _productRepository.GetByIdAsync(id);
-            return _mapper.Map<ProductDTO>(productEntity);
+            var productsQueryById = new GetProductByIdQuery(id);
+
+            if(productsQueryById == null)
+                throw new ApplicationException($"Erroer");
+
+            var result = await _mediator.Send(productsQueryById);    
+            
+            return _mapper.Map<ProductDTO>(productsQueryById);
         }
 
-        public async Task<ProductDTO> GetProductCategory(int? id)
+        public async Task<ProductDTO> GetProductCategory(int id)
         {
             var productEntity = await _productRepository.GetProductCategoryAsync(id);
             return _mapper.Map<ProductDTO>(productEntity);
@@ -53,7 +65,7 @@ namespace CleanArchMvc.Application.Services
             await _productRepository.UpdateAsync(productEntity);
         }
 
-        public async Task Remove(int? id)
+        public async Task Remove(int id)
         {
             var productEntity = _productRepository.GetByIdAsync(id).Result;
             await _productRepository.RemoveAsync(productEntity);
