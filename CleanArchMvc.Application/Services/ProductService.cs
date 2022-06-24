@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using MediatR;
 using CleanArchMvc.Application.Products.Queries;
+using CleanArchMvc.Application.Products.Commands;
 
 namespace CleanArchMvc.Application.Services
 {
@@ -45,29 +46,29 @@ namespace CleanArchMvc.Application.Services
             return _mapper.Map<ProductDTO>(productsQueryById);
         }
 
-        // public async Task<ProductDTO> GetProductCategory(int id)
-        // {
-        //     var productEntity = await _mediator.GetProductCategoryAsync(id);
-        //     return _mapper.Map<ProductDTO>(productEntity);
-        // }
+        public async Task<ProductDTO> GetProductCategory(int id)
+        {
+            var productEntity = await _mediator.Send(GetProductCategory(id));
+            return _mapper.Map<ProductDTO>(productEntity);
+        }
 
-        // public async Task Add(ProductDTO productDto)
-        // {
-        //     var productEntity = _mapper.Map<Product>(productDto);
-        //     await _productRepository.CreateAsync(productEntity);
-        // }
+        public async Task Add(ProductDTO productDto)
+        {
+            var productCreateCommand = _mapper.Map<ProductCreateCommand>(productDto);
+            await _mediator.Send(productCreateCommand);
+        }
 
-        // public async Task Update(ProductDTO productDto)
-        // {
+        public async Task Update(ProductDTO productDto)
+        {
+            var productUpdateCommand = _mapper.Map<ProductUpdateCommand>(productDto);
+            await _mediator.Send(productUpdateCommand);
+        }
 
-        //     var productEntity = _mapper.Map<Product>(productDto);
-        //     await _productRepository.UpdateAsync(productEntity);
-        // }
+        public async Task Remove(int id)
+        {
+            var productRemoveCommand = _mapper.Map<ProductRemoveCommand>(id);
+            await _mediator.Send(productRemoveCommand);
+        }
 
-        // public async Task Remove(int id)
-        // {
-        //     var productEntity = _productRepository.GetByIdAsync(id).Result;
-        //     await _productRepository.RemoveAsync(productEntity);
-        // }
     }
 }
