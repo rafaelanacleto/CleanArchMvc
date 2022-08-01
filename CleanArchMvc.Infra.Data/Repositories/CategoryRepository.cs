@@ -1,40 +1,47 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using CleanArchMvc.Domain.Entities;
 using CleanArchMvc.Domain.Interfaces;
 using CleanArchMvc.Infra.Data.Context;
 
 public class CategoryRepository : ICategoryRepository
 {
-    ApplicationDbContext _categoryContext;
+    private ApplicationDbContext _categoryContext;
 
     public CategoryRepository(ApplicationDbContext context)
     {
         _categoryContext = context;
     }
 
-    public Task<Category> Create(Category category)
+    public async Task<Category> Create(Category category)
     {
-        throw new System.NotImplementedException();
+        _categoryContext.Add(category);
+        await _categoryContext.SaveChangesAsync();
+        return category;
     }
 
-    public Task<Category> GetById(int? id)
+    public async Task<Category> GetById(int? id)
     {
-        throw new System.NotImplementedException();
+        return await _categoryContext.Categories.FindAsync(id);
     }
 
-    public Task<IEnumerable<Category>> GetCatories()
+    public async Task<IEnumerable<Category>> GetCatories()
     {
-        throw new System.NotImplementedException();
+        return await _categoryContext.Categories.ToListAsync();
     }
 
-    public Task<Category> Remove(Category category)
+    public async Task<Category> Remove(Category category)
     {
-        throw new System.NotImplementedException();
+        _categoryContext.Remove(category);
+        await _categoryContext.SaveChangesAsync();
+        return category;
     }
 
-    public Task<Category> Update(Category category)
+    public async Task<Category> Update(Category category)
     {
-        throw new System.NotImplementedException();
+        _categoryContext.Update(category);
+        await _categoryContext.SaveChangesAsync();
+        return category;
     }
 }

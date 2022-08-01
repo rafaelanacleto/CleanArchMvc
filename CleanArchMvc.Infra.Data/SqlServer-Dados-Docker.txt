@@ -1,0 +1,6 @@
+﻿docker run --name sqlserver -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=ra@2020!" -p 1433:1433 -d mcr.microsoft.com/mssql/server
+
+sudo service docker start
+sudo service docker stop
+
+dotnet ef database update
