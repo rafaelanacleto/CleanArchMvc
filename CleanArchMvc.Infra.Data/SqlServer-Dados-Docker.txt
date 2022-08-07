@@ -4,3 +4,6 @@ sudo service docker start
 sudo service docker stop
 
 dotnet ef database update
+
+git config --global user.email "rafael.ferreira.anacleto@gmail.com"
+git config --global user.name "rafaelanacleto"
