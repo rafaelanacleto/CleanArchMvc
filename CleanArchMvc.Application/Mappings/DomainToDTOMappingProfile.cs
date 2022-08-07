@@ -11,6 +11,7 @@ namespace CleanArchMvc.Application.Mappings
             {
                 CreateMap<ProductCreateCommand, ProductDTO>().ReverseMap();
                 CreateMap<ProductUpdateCommand, ProductDTO>().ReverseMap();
+                CreateMap<ProductRemoveCommand, ProductDTO>().ReverseMap();
                 CreateMap<Category, CategoryDTO>().ReverseMap();
                 CreateMap<Product, ProductDTO>().ReverseMap();
             }
