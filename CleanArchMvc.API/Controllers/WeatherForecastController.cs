@@ -1,3 +1,4 @@
+using CleanArchMvc.API.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArchMvc.API.Controllers;

@@ -1,4 +1,4 @@
-namespace CleanArchMvc.API;
+namespace CleanArchMvc.API.Models;
 
 public class WeatherForecast
 {
