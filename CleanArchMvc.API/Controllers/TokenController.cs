@@ -1,5 +1,6 @@
 ﻿using CleanArchMvc.API.Models;
 using CleanArchMvc.Domain.Account;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -20,7 +21,7 @@ namespace CleanArchMvc.API.Controllers
             _authentication = authentication;
             _configuration = configuration;
         }
-
+        [AllowAnonymous]
         [HttpPost("LoginUser")]
         public async Task<ActionResult<UserToken>> Login([FromBody] LoginModel userInfo)
         {
