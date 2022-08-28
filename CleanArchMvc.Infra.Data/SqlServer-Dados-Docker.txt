@@ -1,5 +1,5 @@
 ﻿Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=CleanArchMvcDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False
-
+"Defaultconnection": "Server=localhost,1433;Database=CleanArchDB;User Id=sa;Password=ra@2020!;"
 docker pull mcr.microsoft.com/mssql/server
 
 docker run --name sqlserver -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=ra@2020!" -p 1433:1433 -d mcr.microsoft.com/mssql/server
