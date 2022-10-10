@@ -22,8 +22,6 @@ namespace CleanArchMvc.WebUI.Controllers
             _productService = productAppService;
             _categoryService = categoryService;
             _environment = environment;
-
-
         }
 
         [HttpGet]
