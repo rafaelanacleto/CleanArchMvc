@@ -32,13 +32,13 @@ sudo service docker restart
 memory=2GB 
 
 # Sets the VM to use two virtual processors
-processors=1
+processors=2
 
 # Specify a custom Linux kernel to use with your installed distros. The default kernel used can be found at https://github.com/microsoft/WSL2-Linux-Kernel
-kernel=C:\\temp\\myCustomKernel
+#kernel=C:\\temp\\myCustomKernel
 
 # Sets additional kernel parameters, in this case enabling older Linux base images such as Centos 6
-kernelCommandLine = vsyscall=emulate
+#kernelCommandLine = vsyscall=emulate
 
 # Sets amount of swap storage space to 8GB, default is 25% of available RAM
 #swap=8GB
