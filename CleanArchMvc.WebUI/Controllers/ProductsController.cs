@@ -34,9 +34,7 @@ namespace CleanArchMvc.WebUI.Controllers
         [HttpGet()]
         public async Task<IActionResult> Create()
         {
-            ViewBag.CategoryId =
-            new SelectList(await _categoryService.GetCategories(), "Id", "Name");
-
+            ViewBag.CategoryId = new SelectList(await _categoryService.GetCategories(), "Id", "Name");
             return View();
         }
 
