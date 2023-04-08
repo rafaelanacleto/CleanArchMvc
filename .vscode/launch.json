@@ -10,9 +10,10 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/CleanArchMvc.API/bin/Debug/net6.0/CleanArchMvc.API.dll",
+            "program": "${workspaceFolder}/CleanArchMvc.WebUI/bin/Debug/net6.0/CleanArchMvc.WebUI.dll",
+            
             "args": [],
-            "cwd": "${workspaceFolder}/CleanArchMvc.API",
+            "cwd": "${workspaceFolder}/CleanArchMvc.WebUI",
             "stopAtEntry": false,
             // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
             "serverReadyAction": {
