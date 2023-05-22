@@ -63,7 +63,7 @@ namespace CleanArchMvc.Domain.Entities
 
         public int CategoryId { get; set; }
         public Category Category { get; set; }
-        public string NomeCategoria { get => NomeCategoria; set => NomeCategoria = Category.Name; }
+       // public string NomeCategoria { get => NomeCategoria; set => NomeCategoria = Category.Name; }
 
     }
 }
