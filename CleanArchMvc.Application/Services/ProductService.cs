@@ -26,7 +26,7 @@ namespace CleanArchMvc.Application.Services
         {
             var productsQuery = new GetProductsQuery();
 
-            if(productsQuery == null)
+            if (productsQuery == null)
                 throw new Exception($"Entity could not be loaded.");
 
             var result = await _mediator.Send(productsQuery);
@@ -36,13 +36,13 @@ namespace CleanArchMvc.Application.Services
 
         public async Task<ProductDTO> GetById(int id)
         {
-            var productsQueryById = new GetProductByIdQuery(id);
+            var productByIdQuery = new GetProductByIdQuery(id);
 
-            if(productsQueryById == null)
-                throw new Exception($"Erroer");
+            if (productByIdQuery == null)
+                throw new Exception($"Entity could not be loaded.");
 
-            var result = await _mediator.Send(productsQueryById);    
-            
+            var result = await _mediator.Send(productByIdQuery);
+
             return _mapper.Map<ProductDTO>(result);
         }
 
@@ -66,7 +66,10 @@ namespace CleanArchMvc.Application.Services
 
         public async Task Remove(int id)
         {
-            var productRemoveCommand = _mapper.Map<ProductRemoveCommand>(id);
+            var productRemoveCommand = new ProductRemoveCommand(id);
+            if (productRemoveCommand == null)
+                throw new Exception($"Entity could not be loaded.");
+
             await _mediator.Send(productRemoveCommand);
         }
 
