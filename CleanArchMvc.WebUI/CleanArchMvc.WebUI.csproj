@@ -2,16 +2,20 @@
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+		<UserSecretsId>392e502c-508a-4d90-82c2-eb512c228744</UserSecretsId>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.5" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.5">
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.8" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.8">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\CleanArchMvc.Infra.IoC\CleanArchMvc.Infra.IoC.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="wwwroot\images\" />
 	</ItemGroup>
 </Project>

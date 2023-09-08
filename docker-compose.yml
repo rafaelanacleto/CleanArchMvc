@@ -1,0 +1,7 @@
+sqldata:
+    image: mcr.microsoft.com/mssql/server
+    environment:
+      - SA_PASSWORD=ra@2020!
+      - ACCEPT_EULA=Y
+    ports:
+      - "5434:1433"

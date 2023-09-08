@@ -11,6 +11,7 @@
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/CleanArchMvc.WebUI/bin/Debug/net6.0/CleanArchMvc.WebUI.dll",
+            
             "args": [],
             "cwd": "${workspaceFolder}/CleanArchMvc.WebUI",
             "stopAtEntry": false,

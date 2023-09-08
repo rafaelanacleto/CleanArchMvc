@@ -1,5 +1,6 @@
 ﻿using CleanArchMvc.Application.DTOs;
 using CleanArchMvc.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace CleanArchMvc.WebUI.Controllers
 {
+    [Authorize]
     public class ProductsController : Controller
     {
         private readonly IProductService _productService;
@@ -20,8 +22,6 @@ namespace CleanArchMvc.WebUI.Controllers
             _productService = productAppService;
             _categoryService = categoryService;
             _environment = environment;
-
-
         }
 
         [HttpGet]
@@ -34,9 +34,7 @@ namespace CleanArchMvc.WebUI.Controllers
         [HttpGet()]
         public async Task<IActionResult> Create()
         {
-            ViewBag.CategoryId =
-            new SelectList(await _categoryService.GetCategories(), "Id", "Name");
-
+            ViewBag.CategoryId = new SelectList(await _categoryService.GetCategories(), "Id", "Name");
             return View();
         }
 
