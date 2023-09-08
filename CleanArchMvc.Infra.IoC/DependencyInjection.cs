@@ -13,6 +13,7 @@ using MediatR;
 using CleanArchMvc.Infra.Data.Identity;
 using Microsoft.AspNetCore.Identity;
 using CleanArchMvc.Domain.Account;
+using System.Text.Json.Serialization;
 
 namespace CleanArchMvc.Infra.IoC
 {
@@ -42,6 +43,9 @@ namespace CleanArchMvc.Infra.IoC
             services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
 
             services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
+
+
+            services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);    
 
             var myHandlers = AppDomain.CurrentDomain.Load("CleanArchMvc.Application");
             services.AddMediatR(myHandlers);

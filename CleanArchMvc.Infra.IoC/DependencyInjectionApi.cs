@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Text.Json.Serialization;
 
 namespace CleanArchMvc.Infra.IoC;
 
@@ -37,6 +38,8 @@ public static class DependencyInjectionApi
         services.AddScoped<IAuthenticate, AuthenticateService>();            
 
         services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
+
+        services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 
         var myHandlers = AppDomain.CurrentDomain.Load("CleanArchMvc.Application");
         services.AddMediatR(myHandlers);
