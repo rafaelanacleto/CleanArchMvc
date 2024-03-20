@@ -49,7 +49,8 @@ namespace CleanArchMvc.Infra.IoC
 
             var myHandlers = AppDomain.CurrentDomain.Load("CleanArchMvc.Application");
          
-            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+            // services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+            services.AddMediatR(cf => cf.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly));
 
             return services;
         }
