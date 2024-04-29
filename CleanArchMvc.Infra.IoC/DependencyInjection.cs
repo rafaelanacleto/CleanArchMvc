@@ -45,12 +45,11 @@ namespace CleanArchMvc.Infra.IoC
             services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 
 
-            services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);    
+            services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 
             var myHandlers = AppDomain.CurrentDomain.Load("CleanArchMvc.Application");
-         
-            // services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-            services.AddMediatR(cf => cf.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly));
+
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
             return services;
         }
