@@ -9,7 +9,7 @@ using CleanArchMvc.Application.Interfaces;
 using AutoMapper;
 using CleanArchMvc.Application.Mappings;
 using System;
-using MediatR;
+using System.Reflection;
 using CleanArchMvc.Infra.Data.Identity;
 using Microsoft.AspNetCore.Identity;
 using CleanArchMvc.Domain.Account;
@@ -45,10 +45,11 @@ namespace CleanArchMvc.Infra.IoC
             services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 
 
-            services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);    
+            services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 
             var myHandlers = AppDomain.CurrentDomain.Load("CleanArchMvc.Application");
-            services.AddMediatR(myHandlers);
+
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
             return services;
         }

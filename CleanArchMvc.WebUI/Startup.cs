@@ -28,6 +28,12 @@ namespace CleanArchMvc.WebUI
             services.AddInfrastructure(Configuration);
             services.AddControllersWithViews();
             services.AddAuthentication();
+
+            foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+            {
+                services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(assembly));
+            }
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
