@@ -10,7 +10,6 @@ namespace CleanArchMvc.Domain.Validation
     {
         public DomainExceptionValidation(string error) : base(error)
         {
-
         }
 
         public static void When(bool hasError, string error)
