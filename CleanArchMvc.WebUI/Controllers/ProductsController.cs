@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -107,5 +108,13 @@ namespace CleanArchMvc.WebUI.Controllers
 
             return View(productDto);
         }
+
+        public async Task<string> TotalDespesas()
+        {
+            var products = await _productService.GetProducts();
+
+            return "teste";
+        }
+
     }
 }
