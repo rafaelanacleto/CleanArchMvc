@@ -1,4 +1,5 @@
-﻿@model IEnumerable<CleanArchMvc.Application.DTOs.ProductDTO>
+﻿@using System.Globalization
+@model IEnumerable<CleanArchMvc.Application.DTOs.ProductDTO>
 
 @{
     ViewData["Title"] = "Lista de contas a Pagar";
@@ -35,7 +36,7 @@
                     @Html.DisplayNameFor(model => model.Description)
                 </th>
                 <th>
-                    Category
+                    Categoria
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Price)
@@ -77,3 +78,7 @@
         </tbody>
     </table>
 </div>
+
+<hr>
+
+Total provisionado: <h2>R$ @ViewBag.totalPrice;</h2>
