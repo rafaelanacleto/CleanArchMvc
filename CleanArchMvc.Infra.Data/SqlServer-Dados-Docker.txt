@@ -1,6 +1,6 @@
 ﻿Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=CleanArchMvcDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False
 Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False
-"Defaultconnection": "Server=localhost,1433;Database=CleanArchDB;User Id=sa;Password=ra@2020!;"
+"Defaultconnection": "Server=localhost,1433;Database=CleanArchDB;User Id=sa;Password=ra@2020!;Trusted_Connection=True;"
 					"Server=localhost\SQLEXPRESS;Database=CleanArchDB;Trusted_Connection=True;TrustServerCertificate=False;"
 
 
