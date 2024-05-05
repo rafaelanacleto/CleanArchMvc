@@ -21,7 +21,8 @@
                     <span title="Register New" class="fas fa-plus"></span> Register New
                 </a>
                 <hr>
-                <div>Total provisionado: <h2>R$ @ViewBag.totalPrice;</h2></div>
+                <div>Total provisionado: <h2>@ViewBag.totalPrice.ToString("C2")</h2></div>
+                <br>
             </div>
         </div>
     </div>
@@ -43,6 +44,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Price)
                 </th>
+                <th>
+                    Parcela
+                </th>
                 <th></th>
             </tr>
         </thead>
@@ -61,6 +65,9 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Stock)
                     </td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.Id" title="Edit" class="btn btn-warning">
@@ -83,4 +90,4 @@
 
 <hr>
 
-Total provisionado: <h2>R$ @ViewBag.totalPrice;</h2>
+Total provisionado: <h2>@ViewBag.totalPrice.ToString("C2")</h2>
