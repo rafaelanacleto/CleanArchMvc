@@ -8,6 +8,10 @@ Rodando no windows
 
 Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;
 
+backup banco de dados
+BACKUP DATABASE [CleanArchDB] TO  DISK = N'/var/opt/mssql/data/CleanArchDB-202456-18-41-6.bak' WITH NOFORMAT, NOINIT,  NAME = N'CleanArchDB-202456-18-41-6', NOSKIP, REWIND, NOUNLOAD,  STATS = 10
+
+
 
 docker pull mcr.microsoft.com/mssql/server
 
