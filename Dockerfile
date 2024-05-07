@@ -1,5 +1,8 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
 WORKDIR /CleanArchMvc
+EXPOSE 80
+
+ENV ASPNETCORE_URLS=http://+:8000;http://+:80;
 
 # Copy everything
 COPY . ./
@@ -12,4 +15,4 @@ RUN dotnet publish -c Release -o out
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /CleanArchMvc
 COPY --from=build-env /CleanArchMvc/out .
-ENTRYPOINT ["dotnet", "CleanArchMvc.WebUI/obj/Release/net8.0/CleanArchMvc.WebUI.dll"]
+ENTRYPOINT ["dotnet", "CleanArchMvc.WebUI.dll"]
