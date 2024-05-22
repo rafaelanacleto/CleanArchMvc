@@ -13,9 +13,9 @@ BACKUP DATABASE [CleanArchDB] TO  DISK = N'/var/opt/mssql/data/CleanArchDB-20245
 
 
 
-docker pull mcr.microsoft.com/mssql/server
+sudo docker pull mcr.microsoft.com/mssql/server
 
-docker run --name sqlserver -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=ra@2020!" -p 1433:1433 -d mcr.microsoft.com/mssql/server
+sudo docker run --name sqlserver -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=ra@2020!" -p 1433:1433 -d mcr.microsoft.com/mssql/server
 
 dotnet ef database update
 
