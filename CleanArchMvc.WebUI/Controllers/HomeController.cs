@@ -1,4 +1,6 @@
-﻿using CleanArchMvc.WebUI.Models;
+﻿using CleanArchMvc.Application.Interfaces;
+using CleanArchMvc.WebUI.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,15 +14,48 @@ namespace CleanArchMvc.WebUI.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IProductService _productService;
+        private readonly ICategoryService _categoryService;
+        private readonly IWebHostEnvironment _environment;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IProductService productAppService,
+            ICategoryService categoryService, IWebHostEnvironment environment)
         {
             _logger = logger;
+            _productService = productAppService;
+            _categoryService = categoryService;
+            _environment = environment;
         }
 
-        public IActionResult Index()
+        [HttpGet]
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var products = await _productService.GetProducts();
+            await TotalDespesas();
+            return View(products);
+        }
+
+        [HttpGet]
+        public async Task<JsonResult> GetInformacoesDespesas()
+        {
+            // Lógica para processar os dados recebidos
+            // Retorna uma resposta (por exemplo, sucesso ou erro)
+            var products = await _productService.GetProducts();
+
+            return Json(new { products });
+        }
+
+        public async Task TotalDespesas()
+        {
+            var products = await _productService.GetProducts();
+            decimal total = 0;
+
+            foreach (var item in products)
+            {
+                total += item.Price;
+            }
+
+            ViewBag.totalPrice = total;
         }
 
         public IActionResult Privacy()
