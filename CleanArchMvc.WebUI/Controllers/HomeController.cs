@@ -41,21 +41,26 @@ namespace CleanArchMvc.WebUI.Controllers
             // Lógica para processar os dados recebidos
             // Retorna uma resposta (por exemplo, sucesso ou erro)
             var products = await _productService.GetProducts();
-
+            await TotalDespesas();
             return Json(new { products });
         }
 
         public async Task TotalDespesas()
         {
             var products = await _productService.GetProducts();
-            decimal total = 0;
-
+          
             foreach (var item in products)
             {
-                total += item.Price;
-            }
+                if (item.CategoryId == 5)
+                {
+                    ViewBag.totalPrice += item.Price;
+                }
 
-            ViewBag.totalPrice = total;
+                if (item.CategoryId == 4)
+                {
+                    ViewBag.totalAtivos += item.Price;    
+                }
+            }
         }
 
         public IActionResult Privacy()
