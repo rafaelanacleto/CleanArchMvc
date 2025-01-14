@@ -29,6 +29,9 @@ namespace CleanArchMvc.WebUI.Controllers
         public async Task<IActionResult> Index()
         {
             var products = await _productService.GetProducts();
+            ViewBag.totalPrice = 0;
+            ViewBag.totalAtivos = 0;
+            ViewBag.balanco = 0;
             await TotalDespesas();
             return View(products);
         }
@@ -113,18 +116,24 @@ namespace CleanArchMvc.WebUI.Controllers
             return View(productDto);
         }
 
-        public async Task TotalDespesas()
+       public async Task TotalDespesas()
         {
             var products = await _productService.GetProducts();
-            decimal total = 0;   
-
-            foreach(var item in products)
+          
+            foreach (var item in products)
             {
-                total += item.Price;
-            }    
+                if (item.CategoryId == 4)
+                {
+                    ViewBag.totalPrice += item.Price;
+                }
 
-            ViewBag.totalPrice = total;
+                if (item.CategoryId == 5)
+                {
+                    ViewBag.totalAtivos += item.Price;    
+                }
+            }
         }
+
 
     }
 }

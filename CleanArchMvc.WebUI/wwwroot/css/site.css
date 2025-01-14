@@ -56,11 +56,13 @@ button.accept-policy {
 html {
   position: relative;
   min-height: 100%;
+  background-image: linear-gradient(to right top, #062553, #005386, #00808f, #00aa66, #92c917);
 }
 
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  background-image: linear-gradient(to right top, #062553, #005386, #00808f, #00aa66, #92c917);
 }
 .footer {
   position: absolute;

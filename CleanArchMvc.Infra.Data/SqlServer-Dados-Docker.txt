@@ -20,7 +20,7 @@ sudo docker run --name sqlserver -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=ra@202
 dotnet ef database update
 
 #GLOBAL
-git config --global user.email "rafael.ferreira.anacleto@gmail.com"
+git config --global user.email "rafael.ferreira.anacleto@gmail.com"	
 git config --global user.name "rafaelanacleto"
 
 #Local
