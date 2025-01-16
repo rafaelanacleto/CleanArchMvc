@@ -54,20 +54,33 @@ button.accept-policy {
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
-  background-image: linear-gradient(to right top, #062553, #005386, #00808f, #00aa66, #92c917);
+    position: relative;
+    min-height: 100%;
+    background: hsla(192, 42%, 86%, 1);
+    background: linear-gradient(45deg, hsla(192, 42%, 86%, 1) 47%, hsla(248, 87%, 36%, 1) 100%);
+    background: -moz-linear-gradient(45deg, hsla(192, 42%, 86%, 1) 47%, hsla(248, 87%, 36%, 1) 100%);
+    background: -webkit-linear-gradient(45deg, hsla(192, 42%, 86%, 1) 47%, hsla(248, 87%, 36%, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CEE5EB", endColorstr="#210CAE", GradientType=1 );
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-  background-image: linear-gradient(to right top, #062553, #005386, #00808f, #00aa66, #92c917);
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background: hsla(192, 42%, 86%, 1);
+    background: linear-gradient(45deg, hsla(192, 42%, 86%, 1) 47%, hsla(248, 87%, 36%, 1) 100%);
+    background: -moz-linear-gradient(45deg, hsla(192, 42%, 86%, 1) 47%, hsla(248, 87%, 36%, 1) 100%);
+    background: -webkit-linear-gradient(45deg, hsla(192, 42%, 86%, 1) 47%, hsla(248, 87%, 36%, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CEE5EB", endColorstr="#210CAE", GradientType=1 );
 }
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+    background: hsla(192, 42%, 86%, 1);
+    background: linear-gradient(45deg, hsla(192, 42%, 86%, 1) 47%, hsla(248, 87%, 36%, 1) 100%);
+    background: -moz-linear-gradient(45deg, hsla(192, 42%, 86%, 1) 47%, hsla(248, 87%, 36%, 1) 100%);
+    background: -webkit-linear-gradient(45deg, hsla(192, 42%, 86%, 1) 47%, hsla(248, 87%, 36%, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CEE5EB", endColorstr="#210CAE", GradientType=1 );
 }
