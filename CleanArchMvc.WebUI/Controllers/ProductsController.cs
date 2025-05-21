@@ -122,12 +122,12 @@ namespace CleanArchMvc.WebUI.Controllers
           
             foreach (var item in products)
             {
-                if (item.CategoryId == 4)
+                if (item.CategoryId == 5)
                 {
                     ViewBag.totalPrice += item.Price;
                 }
 
-                if (item.CategoryId == 5)
+                if (item.CategoryId == 4)
                 {
                     ViewBag.totalAtivos += item.Price;    
                 }
