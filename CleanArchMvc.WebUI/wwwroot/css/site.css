@@ -51,9 +51,22 @@ button.accept-policy {
   line-height: inherit;
 }
 
+
+html {
+    position: relative;
+    min-height: 100%;
+    background-color: #cbc6c6;
+}
+
+body {
+    background-color: #cbc6c6;
+}
+
+
+
 /* Sticky footer styles
 -------------------------------------------------- */
-html {
+/*html {
     position: relative;
     min-height: 100%;
     background: hsla(192, 42%, 86%, 1);
@@ -63,9 +76,9 @@ html {
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CEE5EB", endColorstr="#210CAE", GradientType=1 );
 }
 
-body {
+body {*/
     /* Margin bottom by footer height */
-    margin-bottom: 60px;
+    /*margin-bottom: 60px;
     background: hsla(192, 42%, 86%, 1);
     background: linear-gradient(45deg, hsla(192, 42%, 86%, 1) 47%, hsla(248, 87%, 36%, 1) 100%);
     background: -moz-linear-gradient(45deg, hsla(192, 42%, 86%, 1) 47%, hsla(248, 87%, 36%, 1) 100%);
@@ -77,10 +90,10 @@ body {
     bottom: 0;
     width: 100%;
     white-space: nowrap;
-    line-height: 60px; /* Vertically center the text there */
-    background: hsla(192, 42%, 86%, 1);
+    line-height: 60px;*/ /* Vertically center the text there */
+    /*background: hsla(192, 42%, 86%, 1);
     background: linear-gradient(45deg, hsla(192, 42%, 86%, 1) 47%, hsla(248, 87%, 36%, 1) 100%);
     background: -moz-linear-gradient(45deg, hsla(192, 42%, 86%, 1) 47%, hsla(248, 87%, 36%, 1) 100%);
     background: -webkit-linear-gradient(45deg, hsla(192, 42%, 86%, 1) 47%, hsla(248, 87%, 36%, 1) 100%);
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CEE5EB", endColorstr="#210CAE", GradientType=1 );
-}
+}*/
