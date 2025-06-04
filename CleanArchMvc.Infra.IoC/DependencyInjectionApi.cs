@@ -39,7 +39,7 @@ public static class DependencyInjectionApi
 
         services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 
-        services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+        services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
         var myHandlers = AppDomain.CurrentDomain.Load("CleanArchMvc.Application");
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
