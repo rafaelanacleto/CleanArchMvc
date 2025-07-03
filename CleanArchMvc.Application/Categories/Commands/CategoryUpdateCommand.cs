@@ -1,3 +1,4 @@
+using CleanArchMvc.Application.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +8,9 @@ namespace CleanArchMvc.Application.Categories.Commands
 {
     public class CategoryUpdateCommand : CategoryCommand
     {
-        public CategoryUpdateCommand(int id, string name)
+        public CategoryUpdateCommand(CategoryDTO categoryDTO)
         {
-            Id = id;
-            Name = name;
+            
         }
         
         // Additional properties or methods can be added here if needed

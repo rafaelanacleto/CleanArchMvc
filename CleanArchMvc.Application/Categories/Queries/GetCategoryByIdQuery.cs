@@ -9,9 +9,9 @@ namespace CleanArchMvc.Application.Categories.Queries
 {
     public class GetCategoryByIdQuery : IRequest<Category>
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
-        public GetCategoryByIdQuery(int id)
+        public GetCategoryByIdQuery(int? id)
         {
             Id = id;
         }

@@ -9,9 +9,9 @@ namespace CleanArchMvc.Application.Categories.Commands
 {
     public class CategoryRemoveCommand : IRequest<Category>
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         
-        public CategoryRemoveCommand(int id)
+        public CategoryRemoveCommand(int? id)
         {
             Id = id;
         }

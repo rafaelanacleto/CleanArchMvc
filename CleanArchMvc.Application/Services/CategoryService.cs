@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CleanArchMvc.Application.Categories.Commands;
 using CleanArchMvc.Application.Categories.Queries;
 using CleanArchMvc.Application.DTOs;
 using CleanArchMvc.Application.Interfaces;
@@ -33,26 +34,43 @@ namespace CleanArchMvc.Application.Services
 
         public async Task<CategoryDTO> GetById(int? id)
         {
-            var categoryEntity = await _categoryRepository.GetById(id);
-            return _mapper.Map<CategoryDTO>(categoryEntity);
+            var categoryEntity = new GetCategoryByIdQuery(id);
+
+            if (categoryEntity == null)
+                throw new System.Exception($"Entity could not be loaded.");
+            var result = await _mediator.Send(categoryEntity);
+
+            return _mapper.Map<CategoryDTO>(result);
         }
 
         public async Task Add(CategoryDTO categoryDto)
         {
-            var categoryEntity = _mapper.Map<Category>(categoryDto);
-            await _categoryRepository.Create(categoryEntity);
+            var categoryEntity = new CategoryCreateCommand();
+
+            if (categoryDto == null)
+                throw new System.Exception($"Entity could not be loaded.");
+
+            categoryEntity = _mapper.Map<CategoryCreateCommand>(categoryDto);            
         }
 
         public async Task Update(CategoryDTO categoryDto)
         {
-            var categoryEntity = _mapper.Map<Category>(categoryDto);
-            await _categoryRepository.Update(categoryEntity);
+            var categoryEntity = new CategoryUpdateCommand(categoryDto);
+
+            if (categoryDto == null)
+                throw new System.Exception($"Entity could not be loaded.");
+
+            categoryEntity = _mapper.Map<CategoryUpdateCommand>(categoryDto);
         }
 
         public async Task Remove(int? id)
         {
-            var categoryEntity = _categoryRepository.GetById(id).Result;
-            await _categoryRepository.Remove(categoryEntity);
+            var categoryEntity = new CategoryRemoveCommand(id);
+
+            if (categoryEntity == null)
+                throw new System.Exception($"Entity could not be loaded.");
+
+            var result = await _mediator.Send(categoryEntity);
         }
     }
 }

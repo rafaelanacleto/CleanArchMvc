@@ -13,6 +13,12 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Reflection;
 using System.Text.Json.Serialization;
+using MediatR;
+using CleanArchMvc.Application.Products.Commands;
+using CleanArchMvc.Application.Products.Queries;
+using CleanArchMvc.Application.Categories.Commands;
+using CleanArchMvc.Application.Categories.Queries;
+
 
 namespace CleanArchMvc.Infra.IoC;
 
@@ -27,7 +33,10 @@ public static class DependencyInjectionApi
 
         services.AddIdentity<ApplicationUser, IdentityRole>()
            .AddEntityFrameworkStores<ApplicationDbContext>()
-           .AddDefaultTokenProviders();           
+           .AddDefaultTokenProviders();
+
+        // Fix for CS1503: Use the correct overload for AddMediatR
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(GetCategoriesQuery).Assembly));
 
         services.AddScoped<ICategoryRepository, CategoryRepository>();
         services.AddScoped<IProductRepository, ProdutctRepository>();
@@ -35,7 +44,7 @@ public static class DependencyInjectionApi
         services.AddScoped<IProductService, ProductService>();
         services.AddScoped<ICategoryService, CategoryService>();
 
-        services.AddScoped<IAuthenticate, AuthenticateService>();            
+        services.AddScoped<IAuthenticate, AuthenticateService>();
 
         services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 
