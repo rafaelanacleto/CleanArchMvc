@@ -3,6 +3,7 @@ using CleanArchMvc.Application.Categories.Commands;
 using CleanArchMvc.Application.Categories.Queries;
 using CleanArchMvc.Application.DTOs;
 using CleanArchMvc.Application.Interfaces;
+using CleanArchMvc.Application.Products.Commands;
 using CleanArchMvc.Domain.Entities;
 using CleanArchMvc.Domain.Interfaces;
 using MediatR;
@@ -45,22 +46,16 @@ namespace CleanArchMvc.Application.Services
 
         public async Task Add(CategoryDTO categoryDto)
         {
-            var categoryEntity = new CategoryCreateCommand();
-
-            if (categoryDto == null)
-                throw new System.Exception($"Entity could not be loaded.");
-
-            categoryEntity = _mapper.Map<CategoryCreateCommand>(categoryDto);            
+            var categoryCreateCommand = _mapper.Map<CategoryCreateCommand>(categoryDto);
+            await _mediator.Send(categoryCreateCommand);
         }
 
         public async Task Update(CategoryDTO categoryDto)
         {
-            var categoryEntity = new CategoryUpdateCommand(categoryDto);
-
-            if (categoryDto == null)
+            var categoryUpdateCommand = _mapper.Map<CategoryUpdateCommand>(categoryDto);
+            if (categoryUpdateCommand == null)
                 throw new System.Exception($"Entity could not be loaded.");
-
-            categoryEntity = _mapper.Map<CategoryUpdateCommand>(categoryDto);
+            await _mediator.Send(categoryUpdateCommand);
         }
 
         public async Task Remove(int? id)

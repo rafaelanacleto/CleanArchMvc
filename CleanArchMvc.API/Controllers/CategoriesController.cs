@@ -19,12 +19,8 @@ namespace CleanArchMvc.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CategoryDTO>>> Get()
         {
-            var categories = await _categoryService.GetCategories();
-            if (categories == null)
-            {
-                return NotFound("Categories not found");
-            }
-            return Ok(categories);
+            var categories = await _categoryService.GetCategories();            
+            return categories is null ? NotFound("Categories not found") : Ok(categories);
         }
 
         [HttpGet("{id:int}", Name = "GetCategory")]
