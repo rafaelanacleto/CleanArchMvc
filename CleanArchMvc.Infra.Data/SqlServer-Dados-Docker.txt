@@ -1,6 +1,6 @@
 ﻿Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=CleanArchMvcDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False
 Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False
-"Defaultconnection": "Server=localhost,1433;Database=CleanArchDB;User Id=sa;Password=ra@2020!;"
+"Defaultconnection": "Server=localhost,1433;Database=CleanArchDB;User Id=sa;Password=Rafael.2024;Trusted_Connection=True;TrustServerCertificate=False;"
 					"Server=localhost\SQLEXPRESS;Database=CleanArchDB;Trusted_Connection=True;TrustServerCertificate=False;"
 
 
@@ -8,10 +8,12 @@ Rodando no windows
 
 Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;
 
+Comandos:
+docker pull mcr.microsoft.com/mssql/server:2022-latest
 
-docker pull mcr.microsoft.com/mssql/server
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Rafael.2024" -e "MSSQL_PID=Developer" --name mssql-local -p 1433:1433 -v mssql:/var/opt/mssql -d --restart=always --hostname mssql-local --platform linux/amd64 -d mcr.microsoft.com/mssql/server:2022-latest
 
-docker run --name sqlserver -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=ra@2020!" -p 1433:1433 -d mcr.microsoft.com/mssql/server
+
 
 dotnet ef database update
 
