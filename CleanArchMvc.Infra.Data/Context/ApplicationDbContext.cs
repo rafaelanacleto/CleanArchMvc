@@ -14,6 +14,11 @@ namespace CleanArchMvc.Infra.Data.Context
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Ativo> Ativos { get; set; }
+        public DbSet<Passivo> Passivos { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Conta> Contas { get; set; }
+        
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
