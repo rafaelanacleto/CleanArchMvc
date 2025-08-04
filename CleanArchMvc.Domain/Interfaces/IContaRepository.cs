@@ -9,11 +9,10 @@ namespace CleanArchMvc.Domain.Interfaces
     public interface IContaRepository
     {
         Task<IEnumerable<Conta>> GetAllAsync();
-        Task<Conta> GetByIdAsync(int id);
+        Task<Conta> GetByIdAsync(Guid id);
         Task AddAsync(Conta conta);
         Task UpdateAsync(Conta conta);
-        Task DeleteAsync(int id);
-        Task<bool> ContaExistsAsync(int id);
-        Task<IEnumerable<Conta>> GetByTipoAsync(string tipo);
+        Task DeleteAsync(Guid id);
+        Task<bool> ContaExistsAsync(Guid id);
     }
 }

@@ -13,7 +13,6 @@ namespace CleanArchMvc.Domain.Interfaces
         Task<Ativo> Create(Ativo ativo);
         Task<Ativo> Update(Ativo ativo);
         Task<Ativo> Remove(Ativo ativo);
-        Task<IEnumerable<Ativo>> GetAtivosByCategoryId(int categoryId);
         Task<IEnumerable<Ativo>> GetAtivosByStatus(bool status);
         Task<IEnumerable<Ativo>> GetAtivosByDateRange(DateTime startDate, DateTime endDate);
         Task<IEnumerable<Ativo>> GetAtivosByPriceRange(decimal minPrice, decimal maxPrice);
