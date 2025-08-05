@@ -12,7 +12,7 @@ namespace CleanArchMvc.Infra.Data.Identity
 
         public Guid Id { get; private set; }
         public string Nome { get; private set; }
-        public string Email { get; private set; }
+        public string Email { get; set; }
         public string Senha { get; private set; }
         public DateTime DataCadastro { get; private set; }
         public DateTime? DataAtualizacao { get; private set; }
@@ -30,6 +30,12 @@ namespace CleanArchMvc.Infra.Data.Identity
         public ApplicationUser()
         {
 
+        }
+
+        public ApplicationUser(string nome, string email)
+        {
+            Nome = nome;
+            Email = email;
         }
     }
 }
