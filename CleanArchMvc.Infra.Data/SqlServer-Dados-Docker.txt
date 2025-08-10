@@ -6,6 +6,8 @@ Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=master;Integrated Security=Tr
 
 Rodando no windows 
 
+dotnet ef migrations add "Inicial_MIgrations" --startup-project CleanArchMvc.WebUI --project CleanArchMvc.Infra.Data
+
 Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;
 
 Comandos:

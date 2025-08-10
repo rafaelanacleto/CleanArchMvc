@@ -9,7 +9,7 @@ namespace CleanArchMvc.Domain.Entities
     {
         //Renda, Salário, Investimento, etc.
         public Guid Id { get; private set; }
-        public string Nome { get; private set; }
+        public string Nome { get; private set; }        
         public decimal Valor { get; private set; }
         public DateTime DataCriacao { get; private set; }
         public DateTime? DataAtualizacao { get; private set; }

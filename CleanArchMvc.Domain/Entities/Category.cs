@@ -39,5 +39,8 @@ namespace CleanArchMvc.Domain.Entities
 
             Name = name;
         }
+
+        public Guid UsuarioId { get; private set; }
+        public Usuario Usuario { get; private set; }
     }
 }

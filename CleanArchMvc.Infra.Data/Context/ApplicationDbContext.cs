@@ -24,6 +24,22 @@ namespace CleanArchMvc.Infra.Data.Context
         {
             base.OnModelCreating(builder);
             builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+
+            builder.Entity<Ativo>()
+                .Property(a => a.Valor)
+                .HasColumnType("decimal(18,4)");
+
+            builder.Entity<Passivo>()
+                .Property(p =>  p.Valor)
+                .HasColumnType("decimal(18,4");
+
+            builder.Entity<Conta>()
+                .Property(c => c.Saldo)
+                .HasColumnType("decimal(18,4)");
+
+
+
+
         }
     }
 }
