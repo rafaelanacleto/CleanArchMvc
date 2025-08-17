@@ -270,7 +270,7 @@ namespace CleanArchMvc.Infra.Data.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Valor = table.Column<decimal>(type: "decimal(18,4", nullable: false),
+                    Valor = table.Column<decimal>(type: "decimal(18,4)", nullable: false),
                     DataCriacao = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DataAtualizacao = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsAtivo = table.Column<bool>(type: "bit", nullable: false),
