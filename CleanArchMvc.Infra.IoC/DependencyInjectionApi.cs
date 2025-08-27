@@ -37,6 +37,8 @@ public static class DependencyInjectionApi
 
         // Fix for CS1503: Use the correct overload for AddMediatR
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(GetCategoriesQuery).Assembly));
+        
+        services.AddMemoryCache(op => op.SizeLimit = 512);
 
         services.AddScoped<ICategoryRepository, CategoryRepository>();
         services.AddScoped<IProductRepository, ProdutctRepository>();
