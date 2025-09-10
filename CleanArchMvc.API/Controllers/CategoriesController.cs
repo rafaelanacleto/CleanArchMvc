@@ -55,8 +55,6 @@ namespace CleanArchMvc.API.Controllers
 
             var cacheCategoryKey = $"CacheCategory_{id}";
             
-                
-
             var category = await _categoryService.GetById(id);
             if (category == null)
             {
