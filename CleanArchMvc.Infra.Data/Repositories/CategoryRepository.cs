@@ -5,7 +5,9 @@ using CleanArchMvc.Domain.Entities;
 using CleanArchMvc.Domain.Interfaces;
 using CleanArchMvc.Infra.Data.Context;
 
-public class CategoryRepository : ICategoryRepository
+namespace CleanArchMvc.Infra.Data.Repositories
+{
+    public class CategoryRepository : ICategoryRepository
 {
     private ApplicationDbContext _categoryContext;
 
@@ -43,5 +45,6 @@ public class CategoryRepository : ICategoryRepository
         _categoryContext.Update(category);
         await _categoryContext.SaveChangesAsync();
         return category;
+    }
     }
 }

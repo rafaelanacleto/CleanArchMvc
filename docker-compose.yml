@@ -1,7 +1,87 @@
-sqldata:
-    image: mcr.microsoft.com/mssql/server
+version: '3.8'
+
+services:
+  # --------------------------------------------------------------------------------
+  # 1. SQL Server
+  # --------------------------------------------------------------------------------
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql_dev
     environment:
-      - SA_PASSWORD=ra@2020!
-      - ACCEPT_EULA=Y
+      # ATENÇÃO: A senha deve cumprir os requisitos de complexidade do SQL Server!
+      SA_PASSWORD: "SuaSenhaForte123!" 
+      ACCEPT_EULA: "Y"
     ports:
-      - "5434:1433"
+      - "1433:1433" # Porta padrão
+    volumes:
+      # Persiste os dados do banco para não perdê-los ao parar o container
+      - mssql_data:/var/opt/mssql
+    restart: always
+
+  # --------------------------------------------------------------------------------
+  # 2. Redis (Cache e Message Broker Simples)
+  # --------------------------------------------------------------------------------
+  redis:
+    image: redis:latest
+    container_name: redis_dev
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: always
+
+  # --------------------------------------------------------------------------------
+  # 3. RabbitMQ (Mensageria/Message Broker)
+  # --------------------------------------------------------------------------------
+  rabbitmq:
+    image: rabbitmq:3-management # Inclui a interface de gerenciamento
+    container_name: rabbitmq_dev
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    ports:
+      - "5672:5672"   # Porta padrão para comunicação (AMQP)
+      - "15672:15672" # Porta para a interface de gerenciamento web
+    restart: always
+
+  # --------------------------------------------------------------------------------
+  # 4. Elasticsearch (Mecanismo de Busca e Logs) - Versão 7.17.x (mais estável para dev)
+  # --------------------------------------------------------------------------------
+  elasticsearch:
+    image: elasticsearch:7.17.18 
+    container_name: elasticsearch_dev
+    environment:
+      # Configuração mínima para rodar em modo single-node
+      discovery.type: single-node
+      # Aumenta a memória mínima para evitar problemas no Elastic
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m" 
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9200:9200" # Porta HTTP de acesso
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    restart: always
+
+  # --------------------------------------------------------------------------------
+  # 5. Kibana (Visualização de Dados e Logs)
+  # --------------------------------------------------------------------------------
+  kibana:
+    image: kibana:7.17.18 # Deve ser a mesma versão do Elasticsearch
+    container_name: kibana_dev
+    ports:
+      - "5601:5601"
+    environment:
+      # Informa ao Kibana onde encontrar o Elasticsearch
+      ELASTICSEARCH_HOSTS: http://elasticsearch:9200 
+    depends_on:
+      - elasticsearch
+    restart: always
+
+# Definição dos Volumes para persistir os dados
+volumes:
+  mssql_data:
+  redis_data:
+  elasticsearch_data:
