@@ -57,5 +57,16 @@ namespace CleanArchMvc.API
                 endpoints.MapControllers();
             });
         }
+
+
+        public void ConfigureLogging()
+        {
+            var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            var conf = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{environment}.json", optional: true)
+                .Build();
+
+        }
     }
 }
