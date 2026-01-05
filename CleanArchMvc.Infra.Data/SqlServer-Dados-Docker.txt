@@ -11,7 +11,7 @@ Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;
 Comandos:
 docker pull mcr.microsoft.com/mssql/server:2022-latest
 
-docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Rafael.2024" -e "MSSQL_PID=Developer" --name mssql-local -p 1433:1433 -v mssql:/var/opt/mssql -d --restart=always --hostname mssql-local --platform linux/amd64 -d mcr.microsoft.com/mssql/server:2022-latest
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=SuaSenhaForte123!" -e "MSSQL_PID=Developer" --name mssql-local -p 1433:1433 -v mssql:/var/opt/mssql -d --restart=always --hostname mssql-local --platform linux/amd64 -d mcr.microsoft.com/mssql/server:2022-latest
 
 dotnet ef database update
 
